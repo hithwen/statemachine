@@ -1,4 +1,4 @@
-State Machine
+State Machine [![Build Status](https://travis-ci.org/hithwen/statemachine.svg?branch=master)](https://travis-ci.org/hithwen/statemachine)
 =============
 Simple state machine library.
 It represents a [Deterministic automaton](http://en.wikipedia.org/wiki/Deterministic_automaton).
