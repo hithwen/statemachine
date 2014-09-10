@@ -1,0 +1,33 @@
+language: cpp
+compiler:
+- gcc
+before_install:
+- sudo apt-get update -qq
+install:
+- wget http://www.biicode.com/downloads/latest/ubuntu32
+- mv ubuntu32 bii-ubuntu32.deb
+- (! sudo dpkg -i bii-ubuntu32.deb ) && sudo apt-get -f install
+- rm bii-ubuntu32.deb
+- wget http://www.cmake.org/files/v3.0/cmake-3.0.1-Linux-i386.tar.gz
+- tar -xzf cmake-3.0.1-Linux-i386.tar.gz
+- sudo cp -fR cmake-3.0.1-Linux-i386/* /usr
+- rm -rf cmake-3.0.1-Linux-i386
+- rm cmake-3.0.1-Linux-i386.tar.gz
+- wget https://s3.amazonaws.com/biibinaries/thirdparty/arduino-1.0.5-linux32.tgz
+- mkdir -p ~/.biicode_env
+- tar -C ~/.biicode_env/ -xf arduino-1.0.5-linux32.tgz
+- rm arduino-1.0.5-linux32.tgz
+script:
+- bii init biicode_project
+- mkdir -p ./biicode_project/blocks/hithwen/statemachine
+- mv !(biicode_project) ./biicode_project/blocks/hithwen/statemachine
+- cd biicode_project
+- yes uno | bii arduino:settings
+- bii arduino:build
+- ls ./bin/hithwen_statemachine_examples_lcdexample.eep
+after_success:
+- bii user hithwen -p $BII_HITHWEN_PASSWORD
+- bii publish --msg "Travis publication"
+env:
+  global:
+    secure: Krd8NIvwfgxCJvgAwclgj5hcQGrHiFmd7jF4nkwCy0VN2BffTnzsw9xceGWbIhvJWg71bGlpT688b9+9kkWxDbTBIkXcISDTb1+/3IHKF6nlgS9un/5CL1qNZkfHWJHOvz/3gWJ3vC+8BzQ5MiOD+L1OsOn7/vLvU0BJbK9jlxs=
