@@ -1,9 +1,9 @@
 State Machine [![Build Status](https://travis-ci.org/hithwen/statemachine.svg?branch=master)](https://travis-ci.org/hithwen/statemachine)
 =============
+
 Simple state machine library.
 It represents a [Deterministic automaton](http://en.wikipedia.org/wiki/Deterministic_automaton).
 In case two or more transitions apply first one found will be the one applied.
-
 
 The machine is initialized with the number of states and number of transitions it needs.
 
@@ -12,6 +12,8 @@ You can optionally define a `state function` for each state, that will be called
 Then you need to specify each transition. A transition has an origin, a destny and a transition function. Transition functions do not receive parameteres so they must obtain their required info from global variables, input sources etc. If a transition function returns true then the estate is changed to destiny.
 
 You can read about it's differences with the Arduino Playground one in this [blog post](http://web.biicode.com/blog/arduino-day-project-persistent-state-machine).
+
+You can find the code in [github](https://github.com/hithwen/statemachine) and [biicode](http://www.biicode.com/hithwen/hithwen/statemachine/master).
 
 EEPROMState Machine
 ===================
